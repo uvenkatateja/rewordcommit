@@ -1,0 +1,7 @@
+src/
+tests/
+tsconfig.json
+.nvmrc
+*.log
+.DS_Store
+node_modules/

@@ -1,0 +1,56 @@
+{
+  "name": "rewordcommit",
+  "version": "1.0.0",
+  "description": "AI-powered commit message rewriter using Groq",
+  "type": "module",
+  "bin": {
+    "rewordcommit": "./dist/index.mjs",
+    "rwc": "./dist/index.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pkgroll --minify",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "amend",
+    "ai",
+    "groq",
+    "conventional-commits",
+    "cli",
+    "developer-tools"
+  ],
+  "author": "uvenkatateja",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uvenkatateja/rewordcommit.git"
+  },
+  "homepage": "https://github.com/uvenkatateja/rewordcommit#readme",
+  "bugs": {
+    "url": "https://github.com/uvenkatateja/rewordcommit/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "cleye": "^1.3.4",
+    "execa": "^9.6.0",
+    "groq-sdk": "^0.32.0",
+    "ini": "^5.0.0",
+    "kolorist": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/ini": "^4.1.1",
+    "@types/node": "^22.0.0",
+    "pkgroll": "^2.15.4",
+    "tsx": "^4.20.5",
+    "typescript": "^5.6.0"
+  }
+}
