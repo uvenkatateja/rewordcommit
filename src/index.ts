@@ -6,7 +6,7 @@ import { configCmd } from './core/config-cmd.js';
 cli(
   {
     name: 'rewordcommit',
-    version: '1.0.0',
+    version: '1.0.1',
     flags: {
       quick: {
         type: Boolean,
