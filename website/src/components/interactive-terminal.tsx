@@ -106,32 +106,32 @@ export function InteractiveTerminal() {
   return (
     <div className="relative">
       {/* Terminal glow effect */}
-      <div className="absolute -inset-4 bg-gradient-to-b from-neutral-100 to-transparent rounded-3xl blur-2xl opacity-80" />
+      <div className="absolute -inset-4 bg-gradient-to-b from-neutral-200/50 to-transparent rounded-3xl blur-2xl opacity-60" />
 
       {/* Terminal window */}
-      <div className="relative bg-neutral-950 rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] overflow-hidden">
+      <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl shadow-lg border border-neutral-200/50 overflow-hidden">
         {/* Window controls */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-neutral-900/80 border-b border-neutral-800">
-          <div className="w-3 h-3 rounded-full bg-neutral-700" />
-          <div className="w-3 h-3 rounded-full bg-neutral-700" />
-          <div className="w-3 h-3 rounded-full bg-neutral-700" />
+        <div className="flex items-center gap-2 px-4 py-3 bg-neutral-100/50 border-b border-neutral-200/50">
+          <div className="w-3 h-3 rounded-full bg-neutral-300" />
+          <div className="w-3 h-3 rounded-full bg-neutral-300" />
+          <div className="w-3 h-3 rounded-full bg-neutral-300" />
           <span className="ml-3 text-xs text-neutral-500 font-mono">~/projects/my-app</span>
         </div>
 
         {/* Terminal content */}
-        <div className="p-6 font-mono text-sm min-h-[320px] space-y-1">
+        <div className="p-5 font-mono text-xs min-h-[280px] space-y-1">
           {lines.map((line, i) => (
             <div key={i} className="flex items-start">
               {line.type === "command" && (
                 <>
-                  <span className="text-emerald-500 mr-2">❯</span>
-                  <span className="text-neutral-100">{line.text}</span>
+                  <span className="text-emerald-600 mr-2">❯</span>
+                  <span className="text-neutral-900">{line.text}</span>
                 </>
               )}
-              {line.type === "output" && <span className="text-neutral-300">{line.text}</span>}
+              {line.type === "output" && <span className="text-neutral-700">{line.text}</span>}
               {line.type === "dim" && <span className="text-neutral-500">{line.text}</span>}
-              {line.type === "success" && <span className="text-emerald-400">{line.text}</span>}
-              {line.type === "highlight" && <span className="text-amber-400">{line.text}</span>}
+              {line.type === "success" && <span className="text-emerald-600">{line.text}</span>}
+              {line.type === "highlight" && <span className="text-amber-600">{line.text}</span>}
             </div>
           ))}
 
@@ -139,10 +139,10 @@ export function InteractiveTerminal() {
           {currentLineIndex < TERMINAL_SEQUENCE.length && (
             <div className="flex items-start">
               {TERMINAL_SEQUENCE[currentLineIndex]?.type === "command" && currentCharIndex > 0 && (
-                <span className="text-emerald-500 mr-2">❯</span>
+                <span className="text-emerald-600 mr-2">❯</span>
               )}
               {TERMINAL_SEQUENCE[currentLineIndex]?.type === "command" && currentCharIndex === 0 && (
-                <span className="text-emerald-500 mr-2">❯</span>
+                <span className="text-emerald-600 mr-2">❯</span>
               )}
               <span className="w-2 h-5 bg-neutral-400 animate-pulse" />
             </div>
