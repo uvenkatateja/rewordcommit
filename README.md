@@ -61,7 +61,11 @@ rewordcommit config set locale=en
 3. Sends to Groq AI for rewriting
 4. Shows old → new message
 5. You confirm, edit, or cancel
-6. Runs `git commit --amend`
+
+## Links
+
+- [GitHub](https://github.com/uvenkatateja/rewordcommit)
+- [npm](https://www.npmjs.com/package/rewordcommit)
 
 ## License
 

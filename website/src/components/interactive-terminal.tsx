@@ -15,15 +15,15 @@ interface TerminalLine {
 const TERMINAL_SEQUENCE: TerminalLine[] = [
   { type: "command", text: 'git commit -m "fix"' },
   { type: "dim", text: "[main 4a2b1c9] fix", delay: 300 },
-  { type: "dim", text: " 1 file changed, 23 insertions(+), 8 deletions(-)" },
+  { type: "dim", text: "1 file changed, 23 insertions(+), 8 deletions(-)" },
   { type: "command", text: "rewordcommit", delay: 600 },
   { type: "dim", text: "→ Analyzing diff...", delay: 200 },
   { type: "dim", text: "→ Reading changed files...", delay: 400 },
   { type: "output", text: "", delay: 300 },
-  { type: "dim", text: '  Original:  "fix"' },
-  { type: "highlight", text: '  Suggested: "fix: resolve crash when loading invalid JSON config"', delay: 200 },
+  { type: "dim", text: 'Original: "fix"' },
+  { type: "highlight", text: 'Suggested: "fix: resolve crash when loading invalid JSON config"', delay: 200 },
   { type: "output", text: "", delay: 400 },
-  { type: "output", text: "  [y] Apply  [e] Edit  [n] Cancel" },
+  { type: "output", text: "[y] Apply  [e] Edit  [n] Cancel" },
   { type: "command", text: "y", delay: 800 },
   { type: "success", text: "✓ Commit message updated", delay: 200 },
 ]
@@ -105,27 +105,28 @@ export function InteractiveTerminal() {
 
   return (
     <div className="relative">
-      {/* Terminal glow effect */}
-      <div className="absolute -inset-4 bg-gradient-to-b from-neutral-200/50 to-transparent rounded-3xl blur-2xl opacity-60" />
-
-      {/* Terminal window */}
-      <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl shadow-lg border border-neutral-200/50 overflow-hidden">
-        {/* Window controls */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-neutral-100/50 border-b border-neutral-200/50">
-          <div className="w-3 h-3 rounded-full bg-neutral-300" />
-          <div className="w-3 h-3 rounded-full bg-neutral-300" />
-          <div className="w-3 h-3 rounded-full bg-neutral-300" />
-          <span className="ml-3 text-xs text-neutral-500 font-mono">~/projects/my-app</span>
+      {/* Glow effect behind */}
+      <div className="absolute -inset-4 bg-gradient-to-br from-amber-200/30 via-neutral-200/20 to-blue-200/30 rounded-3xl blur-2xl" />
+      
+      <div className="relative bg-white/40 backdrop-blur-xl rounded-2xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden">
+        {/* Mac terminal header */}
+        <div className="flex items-center gap-2 px-4 py-2.5 bg-white/50 border-b border-white/40">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-400/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
+            <div className="w-3 h-3 rounded-full bg-green-400/80" />
+          </div>
+          <span className="text-xs text-neutral-500 ml-2">~/projects/my-app</span>
         </div>
 
         {/* Terminal content */}
-        <div className="p-5 font-mono text-xs min-h-[280px] space-y-1">
+        <div className="p-4 font-mono text-sm min-h-[300px] space-y-1">
           {lines.map((line, i) => (
             <div key={i} className="flex items-start">
               {line.type === "command" && (
                 <>
-                  <span className="text-emerald-600 mr-2">❯</span>
-                  <span className="text-neutral-900">{line.text}</span>
+                  <span className="text-neutral-400 mr-2">❯</span>
+                  <span className="text-neutral-900 font-medium">{line.text}</span>
                 </>
               )}
               {line.type === "output" && <span className="text-neutral-700">{line.text}</span>}
@@ -138,11 +139,8 @@ export function InteractiveTerminal() {
           {/* Cursor */}
           {currentLineIndex < TERMINAL_SEQUENCE.length && (
             <div className="flex items-start">
-              {TERMINAL_SEQUENCE[currentLineIndex]?.type === "command" && currentCharIndex > 0 && (
-                <span className="text-emerald-600 mr-2">❯</span>
-              )}
-              {TERMINAL_SEQUENCE[currentLineIndex]?.type === "command" && currentCharIndex === 0 && (
-                <span className="text-emerald-600 mr-2">❯</span>
+              {TERMINAL_SEQUENCE[currentLineIndex]?.type === "command" && (
+                <span className="text-neutral-400 mr-2">❯</span>
               )}
               <span className="w-2 h-5 bg-neutral-400 animate-pulse" />
             </div>

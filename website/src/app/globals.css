@@ -123,3 +123,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Marching ants animation */
+@keyframes march {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
